@@ -1,0 +1,33 @@
+<head>
+  <title>online-reactivity</title>
+</head>
+
+<body>
+  {{> form}}
+</body>
+
+<template name="form">
+  <h1>Online reactivity</h1>
+  <input type="text" id="fld-label" />
+  <input type="button" id="btn-set-label" value="Add" />
+  
+  {{> list}}
+  
+  <blockquote>
+    Vous pouvez également jouer avec la Session dans la console : >List.insert({label: 'Whate ever you want', date: new Date()});
+  </blockquote>
+</template>
+
+<template name="list">
+  {{#if getItemCount}}
+  <ul>
+  {{#each getItem}}
+    <li>{{label}}</li>
+  {{/each}}
+  </ul>
+  {{/if}}
+  
+  {{#unless getItemCount}}
+  Aucun élément disponible dans la liste
+  {{/unless}}
+</template>
